@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+.product-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-brief-info{
+    width: 200px;
+    height: 250px;
+    margin: 5px;
+}
+
+.product-brief-image{
+    height: 210px;
+}
+
+.product-brief-name{
+    text-align: center;
+    text-transform: capitalize;
+    height: 40px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.product-thumbnail{
+    width: 200px;
+    height: 210px;
+}

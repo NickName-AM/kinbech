@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+<div class="product-container">
+    {% for product in products %}
+    <div class="product-brief-info">
+        <div class="product-brief-image product-part">
+            <img class="product-thumbnail" src="{{product.image.url}}" alt="Image-Info">
+        </div>
+        <div class="product-brief-name product-part">
+            {{product.name}}
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}
