@@ -13,7 +13,20 @@
 <body>
     <div class="mybody">
         <div class="navbar">
-        <!-- HELP -->
+            <div class="navbar-element element-1"><a href="{% url 'products-home' %}" class="link"><h1>Kinbech</h1></a></div>
+            <div class="navbar-element element-2">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="search-data" class="search-box">
+                    <input type="submit" value="Search" class="submit-btn">
+                </form>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="navbar-element element-3"><img src="{{user.myuser.image.url}}" alt="Profile Pic" class="profile-pic"></div>
+            {% else %}
+            <div class="navbar-element element-3">Register</div>|
+            <div class="navbar-element element-4">Signin</div>
+            {% endif %}
         </div>
 
         {% block body %}

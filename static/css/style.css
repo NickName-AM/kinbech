@@ -4,6 +4,41 @@
     font-family: sans-serif;
 }
 
+h1{
+    display: inline-block;
+}
+
+.navbar{
+    padding: 5px;
+    margin-bottom: 20px;
+    background-color: #eb7546;
+    color: #ffffff;
+}
+
+.link{
+    color: #ffffff;
+}
+
+.element-3{
+    margin-right: 10px;
+}
+
+.search-box{
+    padding: 3px;
+}
+
+.submit-btn{
+    padding: 3px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.profile-pic{
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    object-fit: cover;
+}
 .product-container{
     display: flex;
     flex-wrap: wrap;
