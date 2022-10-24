@@ -19,16 +19,22 @@ h1{
     color: #ffffff;
 }
 
-.element-3{
+.element-3, .element-4{
     margin-right: 10px;
 }
 
 .search-box{
     padding: 3px;
+    width: 400px;
+    height: 40px;
+    background-color: #e26d3f;
+    border: none;
 }
+
 
 .submit-btn{
     padding: 3px;
+    height: 40px;
     transition: all 0.3s ease;
     border: none;
 }
