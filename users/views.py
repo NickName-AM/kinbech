@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import MyUser
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm, MyUserUpdateForm
 
 # Create your views here.
 
@@ -18,6 +18,7 @@ def register(request):
             messages.success(request, f'{username} created!')
         else:
             messages.error(request, f'Something went wrong')
+            return redirect('user-register')
         
         return redirect('user-signin')
     else:
@@ -48,30 +49,23 @@ def signout(request):
 
 @login_required
 def profile(request):
-    user = User.objects.get(id=request.user.id)
-    
-    if request.method == 'GET':
-        return render(request, 'users/profile.html', {'user': user})
-    elif request.method == 'POST':
-        uname = request.POST['username']
-        new_passwd = request.POST['newpassword']
-        old_passwd = request.POST['oldpassword']
-
-        if user.check_password(old_passwd):
-            if new_passwd != old_passwd and len(new_passwd) > 0 and len(uname) > 0:
-                try: 
-                    user.username = uname
-                    user.set_password(new_passwd)
-                    user.save()
-                    
-                    messages.success(request, 'Successfully changed')
-                    return redirect('user-signin')
-                except:
-                    messages.error(request, 'Username/Password could not be changed!')
-                    return redirect('user-profile')
-            else:
-                messages.error(request, 'Could not change profile!')
-                return redirect('products-home')
-        else:
-            messages.error(request, 'Wrong password')
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        mu_form = MyUserUpdateForm(request.POST, request.FILES, instance=request.user.myuser)
+        my_forms = {
+            'u_form': u_form,
+            'mu_form': mu_form
+        }
+        if u_form.is_valid() and mu_form.is_valid():
+            u_form.save()
+            mu_form.save()
+            messages.success(request, 'Updated!')
             return redirect('user-profile')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        mu_form = MyUserUpdateForm(instance=request.user.myuser)
+        my_forms = {
+            'u_form': u_form,
+            'mu_form': mu_form
+        }
+        return render(request, 'users/profile.html', context=my_forms)
