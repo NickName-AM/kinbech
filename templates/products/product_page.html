@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Product Page{% endblock title %}
+
+{% block body %}
+<div class="product-page-product-container">
+    <div class="product-page-product-image">
+        <img src="{{product.image.url}}" class="product-page-product-img" alt="Image of the product">
+    </div>
+    <div class="product-page-product-about">
+        <div class="product-about-part product-page-product-about-name">
+            Name: 
+            <div class="product-info product-page-product-name">
+                {{product.name}}
+            </div>
+        </div>
+        <div class="product-about-part product-page-product-about-price">
+            Price: 
+            <div class="product-info product-page-product-price">
+                Rs.{{product.price}}
+            </div>
+        </div>
+        <div class="product-about-part product-page-product-about-seller">
+            Seller: 
+            <div class="product-info product-page-product-seller">
+                {{product.seller.username}}
+            </div>
+        </div>
+        <div class="product-about-part product-page-product-about-description">
+            Description: <br>
+            <div class="product-info product-page-product-description">
+                {{product.description}}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock body %}

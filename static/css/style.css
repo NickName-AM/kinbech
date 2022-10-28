@@ -4,6 +4,10 @@
     font-family: sans-serif;
 }
 
+a:hover{
+    text-decoration: none;
+}
+
 h1{
     display: inline-block;
 }
@@ -53,7 +57,7 @@ h1{
 .product-brief-info{
     width: 200px;
     height: 250px;
-    margin: 5px;
+    margin: 10px;
 }
 
 .product-brief-image{
@@ -71,4 +75,36 @@ h1{
 .product-thumbnail{
     width: 200px;
     height: 210px;
+}
+
+
+.product-page-product-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-page-product-image{
+    margin-right: 20px;
+}
+
+.product-page-product-img{
+    width: 500px;
+    height: 500px;
+}
+
+.product-page-product-about{
+
+}
+
+.product-about-part{
+    margin-bottom: 10px;
+}
+
+.product-page-product-about>*{
+    font-size: 24px;
+}
+
+.product-info{
+    display: inline-block;
+    font-size: 20px;
 }

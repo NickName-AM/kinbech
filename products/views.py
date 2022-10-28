@@ -16,6 +16,10 @@ def home(request):
         search_products = [product for product in products if search_text.lower() in product.name.lower()]
         return render(request, 'products/search.html', {'products': search_products})
 
+def product_page(request, p_id):
+    product = Product.objects.get(id=p_id)
+    return render(request, 'products/product_page.html', {'product': product})
+
 @login_required
 def sell_product(request):
     if request.method == 'GET':
@@ -33,3 +37,4 @@ def sell_product(request):
         else:
             messages.error(request, 'Form is not valid. Check again!')
             return redirect('products-sell')
+

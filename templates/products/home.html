@@ -5,15 +5,20 @@
 {% block body %}
 <div class="product-container">
     {% for product in products %}
+    <a href="{% url 'products-view' p_id=product.id %}">
     <div class="product-brief-info">
+
         <div class="product-brief-image product-part">
             <img class="product-thumbnail" src="{{product.image.url}}" alt="Image-Info">
         </div>
+        
         <div class="product-brief-name product-part">
-            {{product.name}}
+            <span style="color:#000000; font-size: 24px;">{{product.name}}</span><br>
+            <span style="color:#000000;">Rs.{{product.price}}</span>
         </div>
 
     </div>
+    </a>
     {% endfor %}
 </div>
 {% endblock body %}
