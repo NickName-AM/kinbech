@@ -21,12 +21,21 @@
                     <input type="submit" value="Search" class="submit-btn">
                 </form>
             </div>
+
             {% if user.is_authenticated %}
-            <div class="navbar-element element-3"><img src="{{user.myuser.image.url}}" alt="Profile Pic" class="profile-pic"></div>
+            <div class="navbar-element element-3"><a href="{% url 'user-profile' %}"><img src="{{user.myuser.image.url}}" alt="Profile Pic" class="profile-pic"></a></div>
             {% else %}
-            <div class="navbar-element element-3">Register | Signin</div>
+            <div class="navbar-element element-3"><a href="{% url 'user-register' %}" class="link">Register</a> | <a href="{% url 'user-signin' %}" class="link">Signin</a></div>
             {% endif %}
         </div>
+        <!-- Temporary route navbar -->
+        <div  class="navbar">
+            <a href="{% url 'products-sell' %}" class="link">Sell a product</a>
+            <a href="{% url 'user-profile' %}" class="link">Profile</a>
+            <a href="{% url 'user-register' %}" class="link">Register</a>
+            <a href="{% url 'user-signin' %}" class="link">Signin</a>
+        </div>
+        <!-- Temporary route navbar -->
 
         {% block body %}
         {% endblock body %}

@@ -5,11 +5,16 @@ from .models import MyUser
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField() # Required
-    phone = forms.CharField(max_length=20)
     
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'phone']
+        fields = ['username', 'email', 'password1', 'password2']
+    
+
+class UserSigninForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField() # Required
@@ -17,6 +22,7 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email']
+
 
 class MyUserUpdateForm(forms.ModelForm):
     class Meta:

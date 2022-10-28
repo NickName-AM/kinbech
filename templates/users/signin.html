@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}Sign-In{% endblock title %}
 
 
@@ -6,8 +7,8 @@
 <div class="container">
 <form method="POST">
     {% csrf_token %}
-    <label for="username">Username</label><input type="text" name="username">
-    <label for="password">Password</label><input type="password" name="password">
+
+    {{form|crispy}}
 
     <input type="submit" class="submit-btn" value="Signin!">
 </form>

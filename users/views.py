@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import MyUser
-from .forms import UserRegisterForm, UserUpdateForm, MyUserUpdateForm
+from .forms import UserRegisterForm, UserUpdateForm, MyUserUpdateForm, UserSigninForm
 
 # Create your views here.
 
@@ -27,14 +27,15 @@ def register(request):
 
 def signin(request):
     if request.method == 'GET':
-        return render(request, 'users/signin.html')
+        form = UserSigninForm()
+        return render(request, 'users/signin.html', {'form': form})
     elif request.method == 'POST':
         uname = request.POST['username']
         passwd = request.POST['password']
         user = authenticate(request, username=uname, password=passwd)
         # 'user' is not a boolen value, its a user
         if user:
-            # IF user exists and is authenticated, log him/her in and return to home
+            # If user exists and is authenticated, log him/her in and return to home
             login(request, user)
             messages.success(request, 'Login successful.')
             return redirect('products-home')
@@ -69,3 +70,8 @@ def profile(request):
             'mu_form': mu_form
         }
         return render(request, 'users/profile.html', context=my_forms)
+
+@login_required
+def signout(request):
+    logout(request)
+    return redirect('products-home')
