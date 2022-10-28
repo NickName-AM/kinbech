@@ -37,6 +37,12 @@
         </div>
         <!-- Temporary route navbar -->
 
+        {% if messages %}
+            {% for message in messages %}
+                <div style="text-align: center;">{{message}}</div>
+            {% endfor %}
+        {% endif %}
+
         {% block body %}
         {% endblock body %}
 

@@ -17,7 +17,7 @@ def register(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'{username} created!')
         else:
-            messages.error(request, f'Something went wrong')
+            messages.error(request, 'Something went wrong.')
             return redirect('user-register')
         
         return redirect('user-signin')
@@ -30,18 +30,22 @@ def signin(request):
         form = UserSigninForm()
         return render(request, 'users/signin.html', {'form': form})
     elif request.method == 'POST':
-        uname = request.POST['username']
-        passwd = request.POST['password']
-        user = authenticate(request, username=uname, password=passwd)
-        # 'user' is not a boolen value, its a user
-        if user:
-            # If user exists and is authenticated, log him/her in and return to home
-            login(request, user)
-            messages.success(request, 'Login successful.')
-            return redirect('products-home')
+        form = UserSigninForm(request.POST)
+        if form.is_valid():
+            uname = request.POST['username']
+            passwd = request.POST['password']
+            user = authenticate(request, username=uname, password=passwd)
+            # 'user' is not a boolen value, its a user
+            if user:
+                # If user exists and is authenticated, log him/her in and return to home
+                login(request, user)
+                messages.success(request, 'Login successful.')
+                return redirect('products-home')
+            else:
+                messages.error(request, 'Wrong Username/Password')
         else:
-            messages.error(request, 'Something\'s wrong. I can feel it.')
-            return redirect('user-signin')
+            messages.error('Invalid Form.')
+        return redirect('user-signin')
 
 @login_required
 def signout(request):
