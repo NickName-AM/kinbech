@@ -26,10 +26,7 @@ def register(request):
         return render(request, 'users/register.html', {'form': form})
 
 def signin(request):
-    if request.method == 'GET':
-        form = UserSigninForm()
-        return render(request, 'users/signin.html', {'form': form})
-    elif request.method == 'POST':
+    if request.method == 'POST':
         form = UserSigninForm(request.POST)
         if form.is_valid():
             uname = request.POST['username']
@@ -46,6 +43,9 @@ def signin(request):
         else:
             messages.error('Invalid Form.')
         return redirect('user-signin')
+    else:
+        form = UserSigninForm()
+        return render(request, 'users/signin.html', {'form': form})
 
 @login_required
 def signout(request):

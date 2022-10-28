@@ -13,9 +13,10 @@ CATEGORIES = [
 
 class Product(models.Model):
     seller = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, help_text='Name of the product')
     description = models.TextField(help_text='Features/Characteristics of the product.')
     category = models.CharField(max_length=2, choices=CATEGORIES, default='OT')
+    price = models.PositiveIntegerField(help_text='Price of the product. In NPR')
     image = models.ImageField(default='default_product.jpg', upload_to='product_pics')
 
     def __str__(self):

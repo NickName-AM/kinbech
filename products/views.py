@@ -13,10 +13,7 @@ def home(request):
         return render(request, 'products/home.html', {'products': products})
     elif request.method == 'POST':
         search_text = request.POST['search-data']
-        search_products = []
-        for product in products:
-            if search_text in product.name:
-                search_products.append(product)
+        search_products = [product for product in products if search_text.lower() in product.name.lower()]
         return render(request, 'products/search.html', {'products': search_products})
 
 @login_required
