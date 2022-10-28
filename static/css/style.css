@@ -15,7 +15,7 @@ h1{
     color: #ffffff;
 }
 
-.link{
+.link, .link:hover{
     color: #ffffff;
 }
 

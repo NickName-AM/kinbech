@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Product
+from .forms import ProductRegisterForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -16,3 +19,20 @@ def home(request):
                 search_products.append(product)
         return render(request, 'products/search.html', {'products': search_products})
 
+@login_required
+def sell_product(request):
+    if request.method == 'GET':
+        form = ProductRegisterForm()
+        return render(request, 'products/sell.html', {'form': form})
+    elif request.method == 'POST':
+        form = ProductRegisterForm(request.POST, request.FILES)
+        if form.is_valid():
+            p = form.save(commit=False)
+            p.seller = request.user
+            p.save()
+            # form.save()
+            messages.success(request, 'Product Registered!')
+            return redirect('products-home')
+        else:
+            messages.error(request, 'Form is not valid. Check again!')
+            return redirect('products-sell')

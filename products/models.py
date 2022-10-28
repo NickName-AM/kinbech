@@ -12,9 +12,9 @@ CATEGORIES = [
 ]
 
 class Product(models.Model):
-    seller = models.OneToOneField(User, on_delete=models.CASCADE)
+    seller = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
-    description = models.CharField(max_length=500)
+    description = models.TextField(help_text='Features/Characteristics of the product.')
     category = models.CharField(max_length=2, choices=CATEGORIES, default='OT')
     image = models.ImageField(default='default_product.jpg', upload_to='product_pics')
 
