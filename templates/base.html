@@ -15,8 +15,7 @@
         <div class="navbar">
             <div class="navbar-element element-1"><a href="{% url 'products-home' %}" class="link"><h1>Kinbech</h1></a></div>
             <div class="navbar-element element-2">
-                <form method="POST">
-                    {% csrf_token %}
+                <form action="/product/search/" method="GET">
                     <input type="text" name="search-data" class="search-box" placeholder="Search for products">
                     <input type="submit" value="Search" class="submit-btn">
                 </form>

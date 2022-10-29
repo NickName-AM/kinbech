@@ -11,10 +11,16 @@ def home(request):
     products = Product.objects.all()
     if request.method == 'GET':
         return render(request, 'products/home.html', {'products': products})
-    elif request.method == 'POST':
-        search_text = request.POST['search-data']
+    else:
+        return redirect('products-home')
+
+def search(request):
+    if request.method == 'GET':
+        search_text = request.GET['search-data']
         search_products = Product.objects.filter(name__icontains=search_text)
         return render(request, 'products/search.html', {'products': search_products})
+    else:
+        return redirect('products-home')
 
 def product_page(request, p_id):
     product = Product.objects.get(id=p_id)
