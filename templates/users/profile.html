@@ -5,19 +5,22 @@
 
 
 {% block body %}
-<div class="container">
-    <div class="profile-page-pic-div">
-        <img src="{{user.myuser.image.url}}" alt="Profile Pic" class="profile-page-pic">
-    </div>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{u_form|crispy}}
-        {{mu_form|crispy}}
-    
-        <input type="submit" class="submit-btn" value="Update">
-    </form>
-    <hr>
-    <a href="{% url 'user-signout' %}">Sign-out</a> | 
-    <a href="{% url 'products-my' %}">My Products</a>
+<div class="profile-page-pic-div">
+    <img src="{{user.myuser.image.url}}" alt="Profile Pic" class="profile-page-pic">
+    <span class="profile-links">
+        <a href="{% url 'products-sell' %}" class="profile-link">Sell</a> -  
+        <a href="{% url 'products-my' %}" class="profile-link">My Products</a> - 
+        <a href="{% url 'user-signout' %}" class="profile-link">Sign-out</a>
+    </span>
 </div>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{u_form|crispy}}
+    {{mu_form|crispy}}
+
+    <input type="submit" class="submit-btn" value="Update">
+</form>
+
+
 {% endblock body %}

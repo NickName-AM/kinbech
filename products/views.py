@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import Product
 from .forms import ProductRegisterForm, ProductEditForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -28,10 +29,10 @@ def product_page(request, p_id):
 
 @login_required
 def sell_product(request):
-    if request.method == 'GET':
-        form = ProductRegisterForm()
-        return render(request, 'products/sell.html', {'form': form})
-    elif request.method == 'POST':
+    if not request.user.myuser.phone:
+        messages.error(request, 'You need to register your phone number first. Go to Profile to register.')
+        return redirect('user-profile')
+    if request.method == 'POST':
         form = ProductRegisterForm(request.POST, request.FILES)
         if form.is_valid():
             p = form.save(commit=False)
@@ -43,11 +44,23 @@ def sell_product(request):
         else:
             messages.error(request, 'Form is not valid. Check again!')
             return redirect('products-sell')
+    else:
+        form = ProductRegisterForm()
+        return render(request, 'products/sell.html', {'form': form})
 
 @login_required
 def my_products(request):
     products = Product.objects.filter(seller_id=request.user.id)
     return render(request, 'products/my_products.html', {'products': products})
+
+@login_required
+def product_by(request, u_id):
+    products = Product.objects.filter(seller_id=u_id)
+    try:
+        seller = User.objects.get(id=u_id).username
+    except:
+        seller = 'secret'
+    return render(request, 'products/user_products.html', {'products': products, 'seller': seller})
 
 @login_required
 def delete_my_product(request, p_id):

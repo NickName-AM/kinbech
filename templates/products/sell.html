@@ -3,11 +3,11 @@
 {% block title %}Sell{% endblock title %}
 
 {% block body %}
-<div class="container">
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form|crispy}}
-        <input type="submit" class="submit-btn" value="Submit">
-    </form>
-</div>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" class="submit-btn" value="Submit">
+</form>
+
 {% endblock body %}

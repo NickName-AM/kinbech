@@ -12,12 +12,15 @@
         </div>
         
         <div class="my-product-container-element my-product-container-element-2">
-            <span style="color:#000000; font-size: 24px;">{{product.name}}</span><br>
-            <span style="color:#000000;">Rs.{{product.price}}</span>
+            <div>
+                    {{product.name}}
+                <div style="float: right; font-size: 20px;">
+                    Rs. {{product.price}}
+                </div>
+            </div>
         </div>
 
     </div>
     </a>
     {% endfor %}
-
 {% endblock body %}

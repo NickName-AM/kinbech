@@ -13,6 +13,9 @@ h1{
 }
 
 .navbar{
+    position: sticky;
+    top: 0;
+    z-index: 10000;
     padding: 5px;
     margin-bottom: 20px;
     background-color: #eb7546;
@@ -22,6 +25,7 @@ h1{
 .link, .link:hover{
     color: #ffffff;
 }
+
 
 .element-3{
     margin-right: 10px;
@@ -58,7 +62,7 @@ h1{
 }
 
 .profile-page-pic-div{
-    text-align: center;
+    margin-bottom: 50px;
 }
 
 .product-page-product-container{
@@ -73,6 +77,7 @@ h1{
 .product-page-product-img{
     width: 500px;
     height: 500px;
+    object-fit: cover;
 }
 
 .product-page-product-about{
@@ -83,13 +88,22 @@ h1{
     margin-bottom: 10px;
 }
 
-.product-page-product-about>*{
+.product-page-product-about{
+    font-size: 24px;
+}
+
+.product-page-product-about-description{
     font-size: 24px;
 }
 
 .product-info{
     display: inline-block;
     font-size: 20px;
+    text-align: justify;
+}
+
+.product-page-product-description{
+    font-size: 18px;
 }
 
 .my-product-container{
@@ -109,6 +123,7 @@ h1{
     padding: 5px 20px;
     width: 100%;
     position: relative;
+    color: #000000;
 }
 
 .extra-options{
@@ -117,3 +132,19 @@ h1{
     margin-bottom: 10px;
 }
 
+.message{
+    margin: auto auto;
+    width: fit-content;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.profile-link{
+    color: #000000;
+    margin: 0px 20px;
+    font-size: 26px;
+}
+
+.profile-link:hover{
+    color: #555555;
+}

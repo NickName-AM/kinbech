@@ -23,17 +23,22 @@
         <div class="product-about-part product-page-product-about-seller">
             Seller: 
             <div class="product-info product-page-product-seller">
-                {{product.seller.username}}
+                <a href="{% url 'products-by' u_id=product.seller.id %}">{{product.seller.username}}</a>
             </div>
         </div>
-        <div class="product-about-part product-page-product-about-description">
-            Description: <br>
-            <div class="product-info product-page-product-description">
-                {{product.description}}
+        <div class="product-about-part product-page-product-about-contact">
+            Contact:
+            <div class="product-info product-page-product-contact">
+                {{product.seller.myuser.phone}}
             </div>
         </div>
-
     </div>
 
+</div><hr>
+<div class="product-page-product-about-description">
+    Description: <br>
+    <div class="product-info product-page-product-description">
+        {{product.description}}
+    </div>
 </div>
 {% endblock body %}
