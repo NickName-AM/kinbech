@@ -6,7 +6,7 @@
 
 {% block body %}
 <div class="container">
-    <img src="{{user.myuser.image.url}}" alt="Profile Pic" class="profile-pic">@{{user.username}}
+    <img src="{{user.myuser.image.url}}" alt="Profile Pic" class="profile-pic">
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{u_form|crispy}}
@@ -15,6 +15,7 @@
         <input type="submit" class="submit-btn" value="Update">
     </form>
     <hr>
-    <a href="{% url 'user-signout' %}">Sign-out</a>
+    <a href="{% url 'user-signout' %}">Sign-out</a> | 
+    <a href="{% url 'products-my' %}">My Products</a>
 </div>
 {% endblock body %}

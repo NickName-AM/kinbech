@@ -93,7 +93,7 @@ h1{
 }
 
 .product-page-product-about{
-
+    padding: 0px;
 }
 
 .product-about-part{
@@ -108,3 +108,29 @@ h1{
     display: inline-block;
     font-size: 20px;
 }
+
+.my-product-container{
+    display: flex;
+    margin: 10px;
+    box-shadow: 0px 0px 5px #000000;
+}
+
+.my-product-container-img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.my-product-container-element-2{
+    font-size: 24px;
+    padding: 5px 20px;
+    width: 100%;
+    position: relative;
+}
+
+.extra-options{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+}
+
