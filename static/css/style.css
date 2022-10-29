@@ -49,34 +49,17 @@ h1{
     border-radius: 20px;
     object-fit: cover;
 }
-.product-container{
-    display: flex;
-    flex-wrap: wrap;
-}
 
-.product-brief-info{
+.profile-page-pic{
     width: 200px;
-    height: 250px;
-    margin: 10px;
+    height: 200px;
+    border-radius: 100px;
+    object-fit: cover;
 }
 
-.product-brief-image{
-    height: 210px;
-}
-
-.product-brief-name{
+.profile-page-pic-div{
     text-align: center;
-    text-transform: capitalize;
-    height: 40px;
-    margin-top: 10px;
-    font-size: 20px;
 }
-
-.product-thumbnail{
-    width: 200px;
-    height: 210px;
-}
-
 
 .product-page-product-container{
     display: flex;

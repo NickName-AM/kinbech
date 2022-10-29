@@ -10,6 +10,10 @@ from .forms import UserRegisterForm, UserUpdateForm, MyUserUpdateForm, UserSigni
 
 
 def register(request):
+    if request.user.is_authenticated:
+        messages.error(request, 'Signout before registering. Signout at Profile>Sign-out')
+        return redirect('products-home')
+    
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
@@ -26,6 +30,10 @@ def register(request):
         return render(request, 'users/register.html', {'form': form})
 
 def signin(request):
+    if request.user.is_authenticated:
+        messages.error(request, 'You are already signed-in in. Signout at Profile>Sign-out')
+        return redirect('products-home')
+
     if request.method == 'POST':
         form = UserSigninForm(request.POST)
         if form.is_valid():
