@@ -1,6 +1,6 @@
-# Kinbech (In progress)
+# Kinbech (Almost complete)
 
-## A place to buy and sell products
+- A place to buy and sell products
 
 ## Usage:
     pip install pillow
