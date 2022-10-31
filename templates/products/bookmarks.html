@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Home{% endblock title %}
+{% block title %}My Bookmarks{% endblock title %}
 
 {% block body %}
-    {% for product in products %}
+
+{% for product in products %}
     
     <div class="my-product-container">
         <a href="{% url 'products-view' p_id=product.id %}">
@@ -14,7 +15,7 @@
         
         <div class="my-product-container-element my-product-container-element-2">
             <div>
-                <a href="{% url 'products-view' p_id=product.id %}">{{product.name}}</a> - <!-- Bookmark here--> <span id="bookmark"><a id="bookmark-btn" href="{% url 'products-bookmark' p_id=product.id %}">Bookmark</a></span>
+                <a href="{% url 'products-view' p_id=product.id %}">{{product.name}}</a>
                 <div style="float: right; font-size: 20px;">
                     Rs. {{product.price}}
                 </div>

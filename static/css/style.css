@@ -4,13 +4,21 @@
     font-family: sans-serif;
 }
 
+a{
+    color: #000000;
+}
+
 a:hover{
+    color: initial;
     text-decoration: none;
 }
 
 h1{
     display: inline-block;
 }
+
+
+
 
 .navbar{
     position: sticky;
@@ -147,4 +155,11 @@ h1{
 
 .profile-link:hover{
     color: #555555;
+}
+
+#bookmark-btn{
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: rgb(218, 232, 245);
 }

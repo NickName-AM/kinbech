@@ -10,4 +10,9 @@ urlpatterns = [
     path('product/by/<int:u_id>', views.product_by, name='products-by'),
     path('product/my/edit/<int:p_id>', views.edit_my_product, name='products-my-edit'),
     path('product/my/delete/<int:p_id>', views.delete_my_product, name='products-my-delete'),
+    path('product/me/bookmarks/', views.get_bookmarks, name='products-my-bookmarks'),
+    path('product/bookmark/<int:p_id>', views.bookmark, name='products-bookmark'),
+    
+
+    
 ]

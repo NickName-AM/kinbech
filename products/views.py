@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Product
+from .models import Product, Bookmark
 from .forms import ProductRegisterForm, ProductEditForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -94,3 +94,20 @@ def edit_my_product(request, p_id):
         messages.error(request, 'You are not the seller.')
     
     return redirect('products-my')
+
+@login_required
+def bookmark(request, p_id):
+    product = Product.objects.get(id=p_id)
+    if product:
+        Bookmark.objects.create(user=request.user, product_id=p_id)
+        messages.success(request, 'Product Bookmarked')
+    else:
+        messages.error(request, 'Failed to Bookmark')
+    
+    return redirect('products-home')
+
+def get_bookmarks(request):
+    my_bookmarks = Bookmark.objects.filter(user=request.user)
+    products = [Product.objects.get(id=bookmark_id.product_id) for bookmark_id in my_bookmarks]
+
+    return render(request, 'products/bookmarks.html', {'products': products})

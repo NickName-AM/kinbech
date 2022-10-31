@@ -22,3 +22,11 @@ class Product(models.Model):
     def __str__(self):
         return f'{self.name} by {self.seller}'
 
+class Bookmark(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product_id = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f'{self.product_id} bookmarked by {self.user.username}'
+
+
