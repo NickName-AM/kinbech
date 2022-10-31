@@ -98,6 +98,12 @@ def edit_my_product(request, p_id):
 @login_required
 def bookmark(request, p_id):
     product = Product.objects.get(id=p_id)
+    bookmarks = Bookmark.objects.filter(user=request.user)
+    for mark in bookmarks:
+        if mark.product_id == p_id:
+            messages.warning(request, 'Already Bookmarked')
+            return redirect('products-home')
+    
     if product:
         Bookmark.objects.create(user=request.user, product_id=p_id)
         messages.success(request, 'Product Bookmarked')
