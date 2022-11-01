@@ -87,3 +87,17 @@ def profile(request):
 def signout(request):
     logout(request)
     return redirect('products-home')
+
+@login_required
+def delete_account(request):
+    if request.method == 'GET':
+        return render(request, 'users/confirmation.html')
+    elif request.method == 'POST':
+        response = request.POST['submit']
+        if response.lower() == 'yes':
+            u = User.objects.get(id=request.user.id)
+            u.delete()
+            messages.success(request, 'User Deleted')
+        else:
+            return redirect('user-profile')
+    return redirect('user-signin')
