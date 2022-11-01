@@ -112,6 +112,18 @@ def bookmark(request, p_id):
     
     return redirect('products-home')
 
+@login_required
+def unbookmark(request, p_id):
+    bookmark = Bookmark.objects.get(user=request.user, product_id=p_id)
+    if bookmark:
+        bookmark.delete()
+        messages.success(request, 'Bookmark removed')
+    else:
+        messages.error(request, 'Failed to remove bookmark')
+    return redirect('products-my-bookmarks')
+        
+
+@login_required
 def get_bookmarks(request):
     my_bookmarks = Bookmark.objects.filter(user=request.user)
     products = [Product.objects.get(id=bookmark_id.product_id) for bookmark_id in my_bookmarks]

@@ -19,6 +19,7 @@
                 <div style="float: right; font-size: 20px;">
                     Rs. {{product.price}}
                 </div>
+                <a id="bookmark-btn" href="{% url 'products-unbookmark' p_id=product.id %}">Unbookmark</a><br>
             </div>
         </div>
 
