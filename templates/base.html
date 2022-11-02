@@ -23,7 +23,7 @@
 
         {% if user.is_authenticated %}
         <div class="navbar-element element-3">
-            <a href="{% url 'products-my-bookmarks' %}" class="link" style="margin-right: 20px;">My Bookmarks</a>
+            <a href="{% url 'products-my-bookmarks' %}" class="link bookmark-link">My Bookmarks</a>
             <a href="{% url 'user-profile' %}">
                 <img src="{{user.myuser.image.url}}" alt="Profile Pic" class="profile-pic">
             </a>

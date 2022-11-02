@@ -30,4 +30,11 @@ class Bookmark(models.Model):
     def __str__(self):
         return f'{self.product_id} bookmarked by {self.user.username}'
 
+class Comment(models.Model):
+    comment = models.CharField(max_length=1000)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.user} on {self.product.name} by {self.product.seller}'
 

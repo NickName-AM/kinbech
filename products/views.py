@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Product, Bookmark
+from .models import Product, Bookmark, Comment
 from .forms import ProductRegisterForm, ProductEditForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -25,7 +25,17 @@ def search(request):
 
 def product_page(request, p_id):
     product = Product.objects.get(id=p_id)
-    return render(request, 'products/product_page.html', {'product': product})
+    comments = Comment.objects.filter(product=product)
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            cmnt = request.POST['mycomment']
+            c = Comment.objects.create(comment=cmnt, product=product, user=request.user)
+            messages.success(request, 'Comment sent.')
+        else:
+            messages.error(request, 'Sign-in to comment')
+        return redirect('products-view', p_id=p_id)
+    else:
+        return render(request, 'products/product_page.html', {'product': product, 'comments': comments})
 
 @login_required
 def sell_product(request):
@@ -129,3 +139,4 @@ def get_bookmarks(request):
     products = [Product.objects.get(id=bookmark_id.product_id) for bookmark_id in my_bookmarks]
 
     return render(request, 'products/bookmarks.html', {'products': products})
+

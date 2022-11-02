@@ -8,6 +8,15 @@ a{
     color: #000000;
 }
 
+input{
+    transition: border-bottom 0.4s ease-out;
+}
+
+input:focus{
+    outline: none;
+    border-bottom: 1px solid #ffffff;
+}
+
 a:hover{
     color: initial;
     text-decoration: none;
@@ -17,9 +26,6 @@ h1{
     display: inline-block;
 }
 
-
-
-
 .navbar{
     position: sticky;
     top: 0;
@@ -28,12 +34,23 @@ h1{
     margin-bottom: 20px;
     background-color: #eb7546;
     color: #ffffff;
+    overflow: hidden;
 }
 
 .link, .link:hover{
     color: #ffffff;
 }
 
+.bookmark-link{
+    margin-right: 20px;
+    padding: 26px 10px;
+    transition: all 0.4s ease;
+}
+
+.bookmark-link:hover{
+    background-color: #ffffff;
+    color: #eb7546;
+}
 
 .element-3{
     margin-right: 10px;
@@ -43,8 +60,10 @@ h1{
     padding: 3px;
     width: 400px;
     height: 40px;
-    background-color: #e26d3f;
+    background-color: #eb7546;
     border: none;
+    border: 1px solid transparent;
+    color: #ffffff;
 }
 
 
@@ -141,10 +160,10 @@ h1{
 }
 
 .message{
-    margin: auto auto;
     width: fit-content;
     padding: 10px;
-    margin-bottom: 10px;
+    position: absolute;
+    right: 45%;
 }
 
 .profile-link{
@@ -162,4 +181,24 @@ h1{
     border-radius: 10px;
     font-size: 16px;
     background-color: rgb(218, 232, 245);
+}
+
+.comment-box{
+    width: 80%;
+    padding: 5px;
+}
+
+.comment-area{
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #FFF8DC;
+}
+
+.commenter{
+    font-size: 24px;
+}
+
+.comment{
+    margin: -5px 0 0 60px;
+    font-size: 18px;
 }

@@ -41,4 +41,27 @@
         {{product.description}}
     </div>
 </div>
+<hr>
+<div style="font-size: 30px; font-weight:bold;margin-bottom: 20px;">Comments:</div>
+<div class="comment-section">
+    {% if user.is_authenticated %}
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" class="comment-box" name="mycomment" placeholder="Write a comment...">
+            <input type="submit" class="submit-btn" value="Comment">
+        </form>
+    {% endif %}
+    {% if comments %}
+    {% for comment in comments %}
+        <div class="comment-area">
+            <div class="commenter">
+                <img src="{{comment.user.myuser.image.url}}" alt="Profile Pic" class="profile-pic">
+                {{comment.user}}
+            </div>
+            <div class="comment">{{comment.comment}}</div>
+        </div>
+    {% endfor %}
+    {% endif %}
+    
+</div>
 {% endblock body %}
