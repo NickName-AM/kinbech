@@ -1,4 +1,4 @@
-# Kinbech (Almost complete)
+# Kinbech
 
 - A place to buy and sell products
 
