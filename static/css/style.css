@@ -164,6 +164,7 @@ h1{
     padding: 10px;
     position: absolute;
     right: 45%;
+    z-index: 10000;
 }
 
 .profile-link{
@@ -201,4 +202,12 @@ h1{
 .comment{
     margin: -5px 0 0 60px;
     font-size: 18px;
+}
+
+.comment-delete-div{
+    text-align: right;
+}
+
+.comment-delete{
+    color: #333333;
 }

@@ -14,10 +14,16 @@
                 {{product.name}}
             </div>
         </div>
+        <div class="product-about-part product-page-product-about-quantity">
+            Available:
+            <div class="product-info product-page-product-quantity">
+                {{product.quantity}}
+            </div>
+        </div>
         <div class="product-about-part product-page-product-about-price">
             Price: 
             <div class="product-info product-page-product-price">
-                Rs.{{product.price}}
+                Rs.{{product.price}} per item
             </div>
         </div>
         <div class="product-about-part product-page-product-about-seller">
@@ -59,6 +65,11 @@
                 {{comment.user}}
             </div>
             <div class="comment">{{comment.comment}}</div>
+            {% if user == comment.user %}
+            <div class="comment-delete-div">
+                <a href="{% url 'products-comment-delete' c_id=comment.id %}" class="comment-delete">Delete</a>
+            </div>
+            {% endif %}
         </div>
     {% endfor %}
     {% endif %}

@@ -74,11 +74,11 @@ def product_by(request, u_id):
 
 @login_required
 def delete_my_product(request, p_id):
-    product = Product.objects.get(id=p_id)
-    if product.seller.id == request.user.id:
+    try:
+        product = Product.objects.get(id=p_id, seller=request.user)
         product.delete()
         messages.success(request, 'Product Removed.')
-    else:
+    except:
         messages.error(request, 'You are not the seller.')
 
     return redirect('products-my')
@@ -140,3 +140,15 @@ def get_bookmarks(request):
 
     return render(request, 'products/bookmarks.html', {'products': products})
 
+@login_required
+def delete_comment(request, c_id):
+    try:
+        comment = Comment.objects.get(id=c_id, user=request.user)
+        messages.success(request, 'Comment Deleted')
+        p_id = comment.product.id
+        comment.delete()
+        return redirect('products-view', p_id=p_id)
+    except:
+        messages.error(request, 'Comment Not Deleted')
+
+    return redirect('products-home')
