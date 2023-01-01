@@ -6,7 +6,7 @@
     {% for product in products %}
     
     <div class="my-product-container">
-        <a href="{% url 'products-view' p_id=product.id %}">
+        <a href="{% url 'products-view' product.id %}">
         <div class="my-product-container-element my-product-container-element-1">
             <img class="my-product-container-img" src="{{product.image.url}}" alt="Image-Info">
         </div>
@@ -14,7 +14,7 @@
         
         <div class="my-product-container-element my-product-container-element-2">
             <div>
-                <a href="{% url 'products-view' p_id=product.id %}">{{product.name}}</a> - <!-- Bookmark here--> <span id="bookmark"><a id="bookmark-btn" href="{% url 'products-bookmark' p_id=product.id %}">Bookmark</a></span>
+                <a href="{% url 'products-view' product.id %}">{{product.name}}</a> <!-- Bookmark here--> <span id="bookmark"><a id="bookmark-btn" href="{% url 'products-bookmark' product.id %}">Bookmark</a></span>
                 <div style="float: right; font-size: 20px;">
                     Rs. {{product.price}}
                 </div>

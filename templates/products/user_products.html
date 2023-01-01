@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}{{seller}}'s Products{% endblock title %}
+{% block title %}{{products.0.seller.username}}'s Products{% endblock title %}
 
 {% block body %}
 {% if products %}
     {% for product in products %}
-    <a href="{% url 'products-view' p_id=product.id %}" class=".link-black">
+    <a href="{% url 'products-view' product.id %}" class=".link-black">
         <div class="my-product-container">
             <div class="my-product-container-element my-product-container-element-1">
                 <img src="{{product.image.url}}" class="my-product-container-img" alt="{{product.name}}">

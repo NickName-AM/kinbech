@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.urls import reverse
 from PIL import Image
 
 # Create your models here.
@@ -23,6 +23,9 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.name} by {self.seller}'
+    
+    def get_absolute_url(self):
+        return reverse('products-view', kwargs={'pk': self.pk})
 
 class Bookmark(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

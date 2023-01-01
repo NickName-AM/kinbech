@@ -29,7 +29,7 @@
         <div class="product-about-part product-page-product-about-seller">
             Seller: 
             <div class="product-info product-page-product-seller">
-                <a href="{% url 'products-by' u_id=product.seller.id %}">{{product.seller.username}}</a>
+                <a href="{% url 'products-by' product.seller.id %}">{{product.seller.username}}</a>
             </div>
         </div>
         <div class="product-about-part product-page-product-about-contact">
@@ -67,7 +67,7 @@
             <div class="comment">{{comment.comment}}</div>
             {% if user == comment.user %}
             <div class="comment-delete-div">
-                <a href="{% url 'products-comment-delete' c_id=comment.id %}" class="comment-delete">Delete</a>
+                <a href="{% url 'products-comment-delete' comment.id %}" class="comment-delete">Delete</a>
             </div>
             {% endif %}
         </div>

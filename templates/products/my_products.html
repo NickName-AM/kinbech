@@ -14,8 +14,8 @@
                 Price: Rs. {{product.price}}
                 <div class="extra-options">
                     <!-- Delete and edit options -->
-                    <a href="{% url 'products-my-edit' p_id=product.id %}">Edit</a> - 
-                    <a href="{% url 'products-my-delete' p_id=product.id %}">Delete</a>
+                    <a href="{% url 'products-my-edit' product.id %}">Edit</a> - 
+                    <a href="{% url 'products-my-delete' product.id %}">Delete</a>
                 </div>
             </div>
 
